@@ -1,0 +1,83 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Función para mostrar el menú principal
+void mostrar_menu() {
+    cout << "Bienvenido al programa de ajedrez.\n";
+    cout << "Este programa te enseñará las reglas básicas del ajedrez, las características de las piezas y algunos consejos para mejorar tu juego.\n";
+    cout << "Elige una opción del siguiente menú:\n";
+    cout << "1. Aprender las reglas básicas del ajedrez.\n";
+    cout << "2. Aprender las características de las piezas de ajedrez.\n";
+    cout << "3. Aprender algunos consejos para mejorar tu juego.\n";
+    cout << "4. Salir del programa.\n";
+}
+
+// Función para mostrar el menú de las reglas básicas del ajedrez
+void mostrar_menu_reglas() {
+    cout << "Has elegido aprender las reglas básicas del ajedrez.\n";
+    cout << "El ajedrez es un juego de estrategia entre dos jugadores que se enfrentan en un tablero dividido en 64 casillas, llamadas escaques, de colores alternos (blanco y negro).\n";
+    cout << "Cada jugador dispone de 16 piezas: un rey, una dama, dos torres, dos alfiles, dos caballos y ocho peones.\n";
+    cout << "El objetivo del juego es dar jaque mate al rey adversario, es decir, amenazarlo con una pieza propia de forma que no pueda escapar, moverse o ser protegido por otra pieza.\n";
+    cout << "Elige una opción del siguiente menú:\n";
+    cout << "1. Aprender cómo se mueven las piezas.\n";
+    cout << "2. Aprender qué es el enroque, la captura al paso y la promoción del peón.\n";
+    cout << "3. Aprender qué es el jaque, el jaque mate y el ahogado.\n";
+    cout << "4. Volver al menú principal.\n";
+}
+
+// Función para mostrar el menú de las características de las piezas de ajedrez
+void mostrar_menu_piezas() {
+    cout << "Has elegido aprender las características de las piezas de ajedrez.\n";
+    cout << "Cada pieza tiene un valor relativo que indica su importancia en el juego. El valor de las piezas se suele expresar en puntos.\n";
+    cout << "El rey es la pieza más importante, ya que su captura significa el fin del juego. El rey no tiene un valor asignado, pero se puede considerar que vale más que todas las demás piezas juntas.\n";
+    cout << "La dama es la pieza más poderosa, ya que puede moverse en cualquier dirección y a cualquier distancia. La dama vale 9 puntos.\n";
+    cout << "La torre es la segunda pieza más poderosa, ya que puede moverse en horizontal y vertical a cualquier distancia. La torre vale 5 puntos.\n";
+    cout << "El alfil es una pieza que puede moverse en diagonal a cualquier distancia. El alfil vale 3 puntos.\n";
+    cout << "El caballo es una pieza que puede saltar sobre otras piezas y moverse en forma de L (dos casillas en una dirección y una en otra perpendicular). El caballo vale 3 puntos.\n";
+    cout << "El peón es la pieza más débil, ya que solo puede moverse una casilla hacia adelante (o dos en su primer movimiento) y capturar en diagonal. El peón vale 1 punto.\n";
+    cout << "Elige una opción del siguiente menú:\n";
+    cout << "1. Ver un ejemplo gráfico de cada pieza.\n";
+    cout << "2. Ver un ejemplo de partida con cada pieza.\n";
+    cout << "3. Volver al menú principal.\n"; 
+}
+
+// Función para mostrar el menú de los consejos para mejorar el juego
+void mostrar_menu_consejos() {
+    cout << "Has elegido aprender algunos consejos para mejorar tu juego de ajedrez.\n";
+    cout << "El ajedrez es un juego que requiere de mucha práctica, estudio y análisis. No hay una fórmula mágica para ganar, pero hay algunos principios generales que pueden ayudarte a mejorar tu nivel.\n";
+    cout << "Elige una opción del siguiente menú:\n";
+    cout << "1. Aprender los principios de la apertura.\n";
+    cout << "2. Aprender los principios del medio juego.\n";
+    cout << "3. Aprender los principios del final.\n";
+    cout << "4. Volver al menú principal.\n";
+}
+
+// Función principal del programa
+int main() {
+    int opcion; // Variable para almacenar la opción elegida por el usuario
+    bool salir = false; // Variable para controlar la salida del programa
+    while (!salir) { // Bucle principal del programa
+        mostrar_menu(); // Mostrar el menú principal
+        cin >> opcion; // Leer la opción elegida por el usuario
+        switch (opcion) { // Ejecutar la acción correspondiente a la opción elegida
+            case 1: // Opción 1: Aprender las reglas básicas del ajedrez
+                mostrar_menu_reglas(); // Mostrar el menú de las reglas básicas del ajedrez
+                break;
+            case 2: // Opción 2: Aprender las características de las piezas de ajedrez
+                mostrar_menu_piezas(); // Mostrar el menú de las características de las piezas de ajedrez
+                break;
+            case 3: // Opción 3: Aprender algunos consejos para mejorar el juego
+                mostrar_menu_consejos(); // Mostrar el menú de los consejos para mejorar el juego
+                break;
+            case 4: // Opción 4: Salir del programa
+                salir = true; // Cambiar el valor de la variable salir a true para terminar el bucle principal
+                cout << "Gracias por usar el programa de ajedrez. Hasta pronto.\n"; // Despedirse del usuario
+                break;
+            default: // Opción no válida
+                cout << "Opción no válida. Por favor, elige una opción del menú.\n"; // Informar al usuario de que ha elegido una opción no válida
+                break;
+        }
+    }
+    return 0; // Finalizar el programa con éxito
+}
