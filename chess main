@@ -1,44 +1,44 @@
-// Importamos el módulo de ajedrez que contiene las reglas y la lógica del juego
+// Importo el módulo de ajedrez que contiene las reglas y la lógica del juego
 import Chess "mo:chess";
 
-// Creamos un actor que representa el tablero de ajedrez
+// Creo un actor que representa el tablero de ajedrez
 actor Board {
   // El estado del tablero se almacena en una variable de tipo Chess.Board
   var board : Chess.Board = Chess.initBoard();
 
   // La función move recibe las coordenadas de origen y destino de una pieza y devuelve un resultado
   public func move(from : (Nat, Nat), to : (Nat, Nat)) : async Result {
-    // Llamamos a la función tryMove del módulo de ajedrez para validar el movimiento
+    // Llamo a la función tryMove del módulo de ajedrez para validar el movimiento
     let result = Chess.tryMove(board, from, to);
     switch result {
-      // Si el movimiento es válido, actualizamos el estado del tablero y devolvemos el resultado
+      // Si el movimiento es válido, actualizo el estado del tablero y devuelvo el resultado
       case (#ok) {
         board := Chess.applyMove(board, from, to);
         return #ok;
       };
-      // Si el movimiento es inválido, devolvemos el error correspondiente
+      // Si el movimiento es inválido, devuelvo el error correspondiente
       case (#error as error) {
         return #error(error);
       };
     };
   };
 
-  // La función getBoard devuelve el estado actual del tablero
+  // La función getBoard devuelvo el estado actual del tablero
   public query func getBoard() : async Chess.Board {
     return board;
   };
 
   // La función playComputer realiza un movimiento aleatorio para el bando de la computadora
   public func playComputer() : async Result {
-    // Obtenemos una lista de movimientos posibles para el bando de la computadora
+    // Obtengo una lista de movimientos posibles para el bando de la computadora
     let moves = Chess.getMoves(board, Chess.getTurn(board));
     // Si la lista está vacía, significa que el juego ha terminado
     if (moves.size() == 0) {
       return #error("Game over");
     };
-    // Elegimos un movimiento al azar de la lista
+    // Elejo un movimiento al azar de la lista
     let move = moves[nat (Random.int() % moves.size())];
-    // Aplicamos el movimiento al tablero y devolvemos el resultado
+    // Aplico el movimiento al tablero y devolvemos el resultado
     board := Chess.applyMove(board, move.from, move.to);
     return #ok;
   };
